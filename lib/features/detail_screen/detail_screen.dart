@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app/core/contstant.dart';
-import 'package:grocery_app/core/ui/color/colors.dart';
 import 'package:grocery_app/core/ui/components/fav_btn.dart';
 import 'package:grocery_app/core/ui/components/price.dart';
 import 'package:grocery_app/features/detail_screen/components/cart_counter.dart';

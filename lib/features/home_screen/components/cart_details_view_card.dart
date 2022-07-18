@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:grocery_app/core/contstant.dart';
 import 'package:grocery_app/core/ui/components/price.dart';
 import 'package:grocery_app/features/home_screen/models/product_item.dart';
@@ -34,7 +32,7 @@ class CartDetailViewCard extends StatelessWidget {
       trailing: FittedBox(
         child: Row(
           children: [
-            Price(amount: '20'),
+            const Price(amount: '20'),
             Text(
               ' x ${productItem.quantity}',
               style: Theme.of(context)
