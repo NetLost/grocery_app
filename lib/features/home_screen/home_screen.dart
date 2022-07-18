@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app/core/contstant.dart';
 import 'package:grocery_app/features/detail_screen/detail_screen.dart';
+import 'package:grocery_app/features/home_screen/components/card_short_view.dart';
+import 'package:grocery_app/features/home_screen/components/cart_details_view.dart';
 import 'package:grocery_app/features/home_screen/components/home_header.dart';
 import 'package:grocery_app/features/home_screen/components/product_card.dart';
 import 'package:grocery_app/features/home_screen/controllers/home_screen_controller.dart';
@@ -77,15 +79,19 @@ class HomeScreen extends StatelessWidget {
                                         const Duration(milliseconds: 500),
                                     reverseTransitionDuration:
                                         const Duration(milliseconds: 500),
-                                    pageBuilder: (context, animation,
-                                            secondaryAnimation) =>
+                                    pageBuilder: (
+                                      context,
+                                      animation,
+                                      secondaryAnimation,
+                                    ) =>
                                         FadeTransition(
                                       opacity: animation,
                                       child: DetailScreen(
                                         product: productsList[index],
                                         onProductAdd: () {
                                           controller.addProductToCart(
-                                              productsList[index]);
+                                            productsList[index],
+                                          );
                                         },
                                       ),
                                     ),
@@ -108,17 +114,17 @@ class HomeScreen extends StatelessWidget {
                                 AppConstant.cartBarHeight),
                         child: GestureDetector(
                           onVerticalDragUpdate: _onVerticalGesture,
-                          // child: Container(
-                          //   padding: const EdgeInsets.all(AppConstant.defaultPadding),
-                          //   color: Color(0xFFEAEAEA),
-                          //   alignment: Alignment.topLeft,
-                          //   child: AnimatedSwitcher(
-                          //     duration: panelTransition,
-                          //     child: controller.homeState == HomeState.normal
-                          //         ? CardShortView(controller: controller)
-                          //         : CartDetailsView(controller: controller),
-                          //   ),
-                          // ),
+                          child: Container(
+                            padding: const EdgeInsets.all(AppConstant.defaultPadding),
+                            color: const Color(0xFFEAEAEA),
+                            alignment: Alignment.topLeft,
+                            child: AnimatedSwitcher(
+                              duration: AppConstant.panelTransition,
+                              child: controller.homeState == HomeState.normal
+                                  ? CardShortView(controller: controller)
+                                  : CartDetailView(controller: controller),
+                            ),
+                          ),
                         ),
                       ),
                       // Header
